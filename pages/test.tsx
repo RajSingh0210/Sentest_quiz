@@ -264,7 +264,7 @@ export default function Test() {
 
       <PageShell>
         <h1 className="text-xl sm:text-3xl font-bold text-gray-900 text-center mb-2">
-          Testing scenario
+          Test Scenario
         </h1>
         {renderContent()}
       </PageShell>
