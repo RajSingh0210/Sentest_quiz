@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { PageShell } from '@/components/Layout';
-import { SiteHeader } from '@/components/SiteHeader';
 
 interface ScenarioData {
   scenario_id: string;
@@ -116,8 +115,8 @@ export default function Test() {
   };
 
   const formatLiabilityDisplay = (value: number): string => {
-    // Show a compact value (e.g., 65000 becomes 65) for the UI text below the slider.
-    return (value / 1000).toFixed(0);
+    // Show the exact slider value with grouping (no scaling).
+    return Math.round(value).toLocaleString('en-IN');
   };
 
   const renderContent = () => {
@@ -178,7 +177,7 @@ export default function Test() {
               </div>
               <div className="mt-4 pt-4 border-t-2 border-gray-200">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                  <span className="font-bold text-gray-800 text-base sm:text-lg">Base PBO:</span>
+                  <span className="font-bold text-gray-800 text-base sm:text-lg">Base Liablity (PBO):</span>
                   <span className="font-bold text-primary text-lg sm:text-xl">
                     ₹{scenario["Base PBO"]} Lakhs
                   </span>
@@ -194,7 +193,7 @@ export default function Test() {
 
             <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-5 md:p-6 mb-6">
               <p className="font-semibold text-gray-800 mb-4 text-sm sm:text-base">
-                Choose Revised Liability (₹ Lakhs)
+                Choose Revised Liability(PBO) (₹ Lakhs)
               </p>
 
               <div className="mb-2 text-center text-xs sm:text-sm text-gray-700">
@@ -216,13 +215,13 @@ export default function Test() {
 
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs sm:text-sm bg-gray-50 p-4 rounded">
                 <div>
-                  <span className="text-gray-600">Selected Liability: </span>
+                  <span className="text-gray-600">Selected Liability (PBO): </span>
                   <span className="font-bold text-gray-900">
-                    ₹{formatLiabilityDisplay(sliderValue)} Lakhs
-                  </span>
+                    ₹{formatLiabilityDisplay(sliderValue)}
+                  </span> <span className="font-bold text-gray-900">Lakhs</span>
                 </div>
                 <div>
-                  <span className="text-gray-600">Change from Base: </span>
+                  <span className="font-bold text-gray-600">Change from Base: </span>
                   <span
                     className={`font-bold ${
                       parseFloat(getPercentageChange()) >= 0 ? 'text-green-600' : 'text-red-600'
@@ -264,10 +263,6 @@ export default function Test() {
       </Head>
 
       <PageShell>
-        <SiteHeader
-          title="Sentest quiz"
-          subtitle="Take a quick quiz and stand a chance to win surprise gift."
-        />
         {renderContent()}
       </PageShell>
     </>

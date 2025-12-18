@@ -10,7 +10,7 @@ export const SiteHeader: React.FC<SiteHeaderProps> = ({ title, subtitle }) => (
     <div className="flex justify-center">
       <img src="/logo.png" alt="logo" className="w-[148px] h-[48px]" style={{ width: '148px', height: '48px' }} />
     </div>
-    <h1 className="text-[26px] font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl">
+    <h1 className="text-[26px] font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl pt-4">
       {title}
     </h1>
     {subtitle && (

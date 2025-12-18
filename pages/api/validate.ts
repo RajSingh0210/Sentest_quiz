@@ -35,6 +35,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const safeUserPbo = Math.min(Math.max(coercedUserPbo, min), max);
 
   const pct_diff = Math.abs(safeUserPbo - correct_pbo) / correct_pbo * 100;
+  // Accept answers within 1% of the correct PBO
   const result = pct_diff <= 0.5 ? 'Correct' : 'Incorrect';
 
   res.status(200).json({

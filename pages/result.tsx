@@ -14,6 +14,19 @@ export default function ResultPage() {
   const correctValue = typeof correctPbo === 'string' ? parseFloat(correctPbo) : NaN;
 
   const hasData = typeof outcome === 'string';
+  const tolerancePct = 0.5; // correctness band used when validating answers
+
+  const formatNumber = (value: number) =>
+    value.toLocaleString('en-IN', { maximumFractionDigits: 2 });
+
+  const lowerBound =
+    !Number.isNaN(correctValue)
+      ? formatNumber(correctValue * (1 - tolerancePct / 100))
+      : null;
+  const upperBound =
+    !Number.isNaN(correctValue)
+      ? formatNumber(correctValue * (1 + tolerancePct / 100))
+      : null;
 
   // If the page is loaded/refreshed without result data, send user back to registration.
   useEffect(() => {
@@ -63,15 +76,15 @@ export default function ResultPage() {
           >
             {isCorrect
               ? 'Congratulations, you are correct!'
-              : 'Sorry!!! Thank you for participating.'}
+              : 'Oops!!! Thank you for participating.'}
           </h2>
 
           <div className="mt-4 space-y-2 text-sm text-gray-700">
-            {!Number.isNaN(correctValue) && (
+            {lowerBound && upperBound && (
               <p>
-                Correct PBO:{' '}
+                Correct PBO Range:{' '}
                 <span className="font-semibold">
-                  ₹{correctValue} Lakhs
+                  (₹{lowerBound} Lakhs - ₹{upperBound} Lakhs)
                 </span>
               </p>
             )}

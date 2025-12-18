@@ -93,8 +93,8 @@ export default function Register() {
 
       <PageShell>
         <SiteHeader
-          title="A quick, Knowledge Check"
-          subtitle="Take a quick quiz and stand a chance to win surprise gift."
+          title="Take a Quick Test"
+          subtitle="A perfect guess unlocks a surprise gift!!!"
         />
 
         <div className="bg-white rounded-2xl shadow-[0_18px_45px_rgba(15,23,42,0.12)] border border-gray-100 overflow-hidden">
@@ -146,8 +146,6 @@ export default function Register() {
                     value={form.phone}
                     onChange={handleChange('phone')}
                     placeholder="Phone number"
-                  inputMode="tel"
-                  pattern="^\\+?[0-9\\s-]{7,15}$"
                     className="w-full rounded-xl border border-gray-200 px-4 py-3 focus:border-primary focus:ring-2 focus:ring-primary/30 transition"
                   />
                   {errors.phone && <p className="text-sm text-red-600">{errors.phone}</p>}
@@ -177,7 +175,7 @@ export default function Register() {
                   disabled={submitting}
                   className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-orange-500 hover:from-blue-700 hover:to-orange-600 text-white font-semibold px-4 py-2 rounded-xl shadow-lg transition-transform duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {submitting ? 'Starting...' : 'Start Quiz'}
+                  {submitting ? 'Starting...' : 'Start Test'}
                   <span className="ml-2 text-lg">→</span>
                 </button>
               </div>
