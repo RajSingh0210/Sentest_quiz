@@ -191,27 +191,10 @@ export default function Test() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-5 md:p-6 mb-6">
+            <div className="bg-white rounded-lg border border-gray-200 p-3 sm:p-5 md:p-6 mb-3">
               <p className="font-semibold text-gray-800 mb-4 text-sm sm:text-base">
                 Choose Revised Liability(PBO) (₹ Lakhs)
               </p>
-
-              <div className="mb-2 text-center text-xs sm:text-sm text-gray-700">
-                Change: {getPercentageChange()}%
-              </div>
-
-              <div className="mb-4">
-                <input
-                  type="range"
-                  min={scenario["Base PBO"] * 0.75}
-                  max={scenario["Base PBO"] * 1.25}
-                  step={0.1}
-                  value={sliderValue}
-                  onChange={(e) => setSliderValue(parseFloat(e.target.value))}
-                  aria-label="Choose revised liability (₹ Lakhs)"
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
-                />
-              </div>
 
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs sm:text-sm bg-gray-50 p-4 rounded">
                 <div>
@@ -232,6 +215,19 @@ export default function Test() {
                 </div>
               </div>
             </div>
+            
+            <div className="bg-white rounded-lg border border-gray-200 mb-6 pb-2 pt-2">
+                <input
+                  type="range"
+                  min={scenario["Base PBO"] * 0.75}
+                  max={scenario["Base PBO"] * 1.25}
+                  step={0.1}
+                  value={sliderValue}
+                  onChange={(e) => setSliderValue(parseFloat(e.target.value))}
+                  aria-label="Choose revised liability (₹ Lakhs)"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
+                />
+              </div>
 
             <div className="flex justify-center mb-6">
               <button
